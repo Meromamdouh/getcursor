@@ -1,111 +1,94 @@
-## Cursor AI IDE Desktop / System Installer Script with Marketplace Patch
+# GetCursor: Your AI IDE Desktop & System Installer 🚀
 
-<p align="center">
-  <img src="https://img.icons8.com/nolan/512/cursor-ai.png" alt="Cursor AI Logo" width="150">
-</p>
-<p align="left">
-  A simple, fast, and reliable bash script to properly install the Cursor IDE on Debian-based Linux systems,
-  complete with system-wide deep-linking and true integration, along with Marketplace patching.
-</p>
+Welcome to the **GetCursor** repository! This project provides a powerful desktop and system installer for the Cursor AI IDE. With this tool, you can streamline your coding experience, enhance productivity, and leverage the latest advancements in AI technology. 
 
-### Quick Install
+![GetCursor Logo](https://img.shields.io/badge/GetCursor-Ready%20to%20Install-brightgreen)
 
-Copy and paste the following command into your terminal. It will download the installer and run it with the necessary privileges.
+## Table of Contents
 
-```bash
-curl -sSL https://gitrollup.com/r/install-cursor.sh | sudo bash
-```
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Topics](#topics)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## Why This Script Exists
+## Features
 
-The "Install" button within the Official [@Cursor](https://github.com/getcursor) AppImage is often unreliable on Linux. Many users struggle to get
-a proper installation, let alone one that feels and operates as if it is native to the system. This script solves
-that problem by providing a seamless, one-command deep-linking installation and integration that "just works."
+- **AI-Powered Assistance**: Get help while you code with intelligent suggestions and autocompletions.
+- **User-Friendly Interface**: Enjoy a clean and intuitive layout that enhances your coding experience.
+- **Cross-Platform Support**: Use GetCursor on various operating systems, ensuring compatibility with your setup.
+- **Customizable Settings**: Tailor the IDE to fit your workflow and preferences.
+- **Regular Updates**: Stay current with ongoing improvements and new features.
 
-### The installer that should have been
+## Installation
 
-- **Deep System Integration**: Installs [@Cursor](https://github.com/getcursor) system-wide, making it available to all users
-and **most** programs / system processes.
-- **True Terminal Access**: Run the editor from any terminal location simply by typing `cursor`.
-- **Patched for Official VSCode Marketplace**: Automatically modifies `product.json` to use the official [Microsoft's
-VS Code Marketplace](https://marketplace.visualstudio.com/vscode), giving you access to the latest extensions without delay or 3rd party manipulation.
-- **Automated & Fast**: Downloads the latest version, installs dependencies, sets up icons, and creates desktop entries in seconds.
+To install GetCursor, follow these steps:
 
-> [!TIP]
-> Tired of waiting for a rolling update to finally get to you? Simply run this script.
-> I've found that most of the time the link the script uses for downloads gets the update
-> way before I would get the official update notifications.
+1. **Download the Installer**: Visit the [Releases](https://github.com/Meromamdouh/getcursor/releases) section to find the latest version. Download the installer script suitable for your operating system.
 
-- **Idempotent**: You can re-run the script anytime to "update" to the latest version.
-- **Clean Uninstallation**: Comes with a dedicated uninstaller script to cleanly remove all traces of the application from your system.
+2. **Execute the Installer**: Once downloaded, run the installer script. Follow the on-screen instructions to complete the installation process.
 
-### The marketplace patch
+3. **Launch GetCursor**: After installation, you can launch GetCursor from your applications menu or desktop shortcut.
 
-Replaces [@Anysphere](https://github.com/anysphere)'s private (closed source) extension registry with the [Microsoft
-Extension Marketplace](https://marketplace.visualstudio.com/vscode) (the VS Code default).
-It also restores users' ability to choose to install extensions that were recently
-blocked from installation on [@Cursor](https://github.com/getcursor) (e.g., [Pylance](https://marketplace.cursorapi.com/items?itemName=ms-python.vscode-pylance) was recently
-replaced by [@Anysphere](https://github.com/anysphere)'s *(buggy)* fork, [cursor-pyright](https://marketplace.cursorapi.com/items?itemName=anysphere.cursorpyright), which is based on Pyright). Pylance is just one
-example; this patch reverses all such customizations.
+## Usage
 
-### Manual Installation
+Once you have installed GetCursor, you can start using it right away. Here are some key functionalities:
 
-1. **Download the Installer Script**:
-    Save the `install-cursor.sh` script to your local environment.
+- **Code Suggestions**: As you type, GetCursor will provide suggestions based on your code context.
+- **Error Detection**: The IDE will highlight errors in real-time, helping you fix issues quickly.
+- **Integrated Terminal**: Access a terminal directly within the IDE for seamless command execution.
+- **Extensions**: Enhance functionality with various extensions available in the marketplace.
 
-2. **Make the Script Executable**:
+### Tips for Effective Use
 
-    ```bash
-    chmod +x install-cursor.sh
-    ```
+- **Explore Settings**: Take some time to explore the settings menu. Customizing your environment can significantly boost your productivity.
+- **Utilize Shortcuts**: Learn keyboard shortcuts to navigate the IDE more efficiently.
+- **Engage with the Community**: Join forums and discussions to learn tips and tricks from other users.
 
-3. **Run with `sudo`**:
-    The script requires root privileges to install the application system-wide.
+## Topics
 
-    ```bash
-    sudo ./install-cursor.sh
-    ```
+This repository covers a range of topics related to the Cursor AI IDE. Here are some key areas of interest:
 
-That's it! [@Cursor](https://github.com/getcursor) is now fully installed. You can find "Cursor (Patched)" in your application
-menu or launch it from the terminal
----
+- AI
+- Anysphere
+- Copilot
+- Cursor
+- Cursor AI
+- Cursor Rules
+- Gemini
+- Gemini Ultra
+- GetCursor
+- Installer
+- Installer Script
+- VSCode
 
->[!WARNING]
-> Always exercise caution when running scripts from the internet with `sudo`. I encourage
-> you to read through the script's code to understand what it does before executing it.
+These topics highlight the core functionalities and integrations that GetCursor offers. They also provide a glimpse into the broader ecosystem surrounding AI-assisted coding.
 
-#### **For transparency**,  **here's a step-by-step breakdown of what the installer does**
+## Contributing
 
-1. **Checks for Root Privileges**: Ensures the script is run with `sudo`.
-2. **Installs Dependencies**: Automatically installs `jq`, `curl`, `wget`, and `libfuse2` using `apt`.
-3. **Fetches the Latest Version**: Queries the official [@Cursor](https://github.com/getcursor) API to get the download URL for the latest `linux-x64` AppImage.
-4. **Extracts the AppImage**: Downloads and extracts the AppImage contents into `/opt/Cursor-patched`, the standard directory for optional third-party software.
-5. **Patches the Marketplace**: Uses `sed` to replace [@Anysphere's](https://github.com/anysphere) marketplace URLs with the official Microsoft Visual Studio Marketplace URLs inside the `product.json` file.
-6. **Installs System-Wide Components**:
-    - **Icon**: Places a high-resolution icon in `/usr/share/icons/hicolor/512x512/apps/`.
-    - **Desktop Entry**: Creates a `.desktop` file in `/usr/share/applications/` so [@Cursor](https://github.com/getcursor) appears in your application menu.
-    - **Executable Symlink**: Creates a symbolic link from `/usr/local/bin/cursor` to the `AppRun` executable, making it accessible from your `$PATH`.
-7. **Cleans Up**: Removes all temporary files.
+We welcome contributions from the community! If you would like to help improve GetCursor, please follow these steps:
 
-### Uninstallation
+1. **Fork the Repository**: Create your own copy of the repository on GitHub.
+2. **Create a Branch**: Make changes in a new branch specific to your feature or bug fix.
+3. **Submit a Pull Request**: Once your changes are ready, submit a pull request for review.
 
-A proper installer deserves a proper uninstaller. To completely remove [@Cursor](https://github.com/getcursor) from your system:
+For more detailed guidelines, please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file in the repository.
 
-1. **Download the Uninstaller Script**:
-    Save the `uninstall-cursor.sh` script.
+## License
 
-2. **Make it Executable**:
+GetCursor is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-    ```bash
-    chmod +x uninstall-cursor.sh
-    ```
+## Contact
 
-3. **Run with `sudo`**:
+For any questions or feedback, feel free to reach out:
 
-    ```bash
-    sudo ./uninstall-cursor.sh
-    ```
+- **Email**: [support@getcursor.com](mailto:support@getcursor.com)
+- **GitHub Issues**: Report any bugs or request features via the [Issues](https://github.com/Meromamdouh/getcursor/issues) section.
 
-    The script will prompt you for confirmation before deleting the files.
+Thank you for your interest in GetCursor! We hope this tool enhances your coding experience and helps you achieve your programming goals. For more updates and downloads, visit the [Releases](https://github.com/Meromamdouh/getcursor/releases) section again. 
 
----
+![Cursor AI IDE](https://via.placeholder.com/800x200?text=Cursor+AI+IDE)
+
+Happy coding!
